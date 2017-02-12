@@ -42,7 +42,7 @@ class Tim_Reddit_Widget extends WP_Widget {
 			if ($i > 10) {
 				break;
 			}
-			posts[] = [
+			$posts[] = [
 				'title' => $post->find('a.title', 0)->plaintext,
 				'url' => $post->find('a.comments', 0)->href
 			];
