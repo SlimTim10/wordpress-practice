@@ -42,7 +42,7 @@ class Tim_Reddit_Widget extends WP_Widget {
 			if ($i > 10) {
 				break;
 			}
-			echo $post->find('div', 0)->getAttribute('id');
+			echo $post->find('a.title', 0)->plaintext;
 			$i++;
 		}
 		
