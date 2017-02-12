@@ -38,17 +38,26 @@ class Tim_Reddit_Widget extends WP_Widget {
 		$html = \simplehtmldom_1_5\file_get_html('https://www.reddit.com/');
 		$posts = [];
 		$i = 1;
-		foreach($html->find('div#siteTable div.thing') as $post) {
+		foreach ($html->find('div#siteTable div.thing') as $post) {
 			if ($i > 10) {
 				break;
 			}
-			echo $post->find('a.title', 0)->plaintext;
+			posts[] = [
+				'title' => $post->find('a.title', 0)->plaintext,
+				'url' => $post->find('a.comments', 0)->href
+			];
 			$i++;
 		}
 		
 		echo $args['before_widget'];
 		echo $args['before_title'] . $title . $args['after_title'];
-		echo esc_html__( 'Hello, World!', 'text_domain' );
+		foreach ($posts as $post) {
+			?>
+			<p>
+			<a href="<?php echo $post->url ?>"><?php echo $post->title ?></a>
+			</p>
+			<?php
+		}
 		echo $args['after_widget'];
 	}
 
