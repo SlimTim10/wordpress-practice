@@ -35,7 +35,7 @@ class Tim_Reddit_Widget extends WP_Widget {
 		$title = 'Top 10 reddit posts';
 
 		// Get top 10 posts on reddit
-		$html = file_get_html('https://www.reddit.com/');
+		$html = \simplehtmldom_1_5\file_get_html('https://www.reddit.com/');
 		$posts = [];
 		$i = 1;
 		foreach($html->find('#siteTable') as $post) {
