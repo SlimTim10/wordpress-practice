@@ -5,6 +5,8 @@
   Description: Displays top reddit posts
 */
 
+require('inc/simple_html_dom.php');
+
 class Tim_Reddit_Widget extends WP_Widget {
 
 	/**
@@ -31,6 +33,18 @@ class Tim_Reddit_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		$title = 'Top 10 reddit posts';
+
+		// Get top 10 posts on reddit
+		$html = file_get_html('https://www.reddit.com/');
+		$posts = [];
+		$i = 1;
+		foreach($html->find('#siteTable') as $post) {
+			if ($i > 10) {
+				break;
+			}
+			echo $post->find('div', 0)->getAttribute('id');
+			$i++;
+		}
 		
 		echo $args['before_widget'];
 		echo $args['before_title'] . $title . $args['after_title'];
