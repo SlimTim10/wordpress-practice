@@ -38,7 +38,7 @@ class Tim_Reddit_Widget extends WP_Widget {
 		$html = \simplehtmldom_1_5\file_get_html('https://www.reddit.com/');
 		$posts = [];
 		$i = 1;
-		foreach($html->find('#siteTable') as $post) {
+		foreach($html->find('div#siteTable div.thing') as $post) {
 			if ($i > 10) {
 				break;
 			}
