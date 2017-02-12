@@ -11,10 +11,13 @@ class Tim_Reddit_Widget extends WP_Widget {
 	 * Register widget with WordPress.
 	 */
 	function __construct() {
+		$widget_ops = array(
+			'description' => esc_html__( 'A Reddit Widget by Tim', 'text_domain' ),
+		);
 		parent::__construct(
 			'tim_reddit_widget', // Base ID
 			esc_html__( 'Tim Reddit Widget', 'text_domain' ), // Name
-			array( 'description' => esc_html__( 'A Reddit Widget by Tim', 'text_domain' ), ) // Args
+			$widget_ops,
 		);
 	}
 
@@ -27,10 +30,10 @@ class Tim_Reddit_Widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
+		$title = 'Top 10 reddit posts';
+		
 		echo $args['before_widget'];
-		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
-		}
+		echo $args['before_title'] . $title . $args['after_title'];
 		echo esc_html__( 'Hello, World!', 'text_domain' );
 		echo $args['after_widget'];
 	}
