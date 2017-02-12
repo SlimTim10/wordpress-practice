@@ -17,7 +17,7 @@ class Tim_Reddit_Widget extends WP_Widget {
 		parent::__construct(
 			'tim_reddit_widget', // Base ID
 			esc_html__( 'Tim Reddit Widget', 'text_domain' ), // Name
-			$widget_ops,
+			$widget_ops
 		);
 	}
 
