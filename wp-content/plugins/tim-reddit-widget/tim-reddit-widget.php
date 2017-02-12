@@ -54,7 +54,7 @@ class Tim_Reddit_Widget extends WP_Widget {
 		foreach ($posts as $post) {
 			?>
 			<p>
-			<a href="<?php echo $post->url ?>"><?php echo $post->title ?></a>
+			<a href="<?php echo $post['url'] ?>"><?php echo $post['title'] ?></a>
 			</p>
 			<?php
 		}
